@@ -7,11 +7,18 @@ namespace Minutes
 {
     public partial class App : Application
     {
+        public static IEntryStore Entries { get; set; }
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
+            MainPage = new EntriesPage();
+
+            Entries = new MemoryEntryStore();
+
+            Entries.LoadMockData();
         }
 
         protected override void OnStart()
